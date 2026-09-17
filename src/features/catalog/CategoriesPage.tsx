@@ -1,8 +1,8 @@
 import { ChevronRight, Plus } from "lucide-react";
 import "./CategoriesPage.css";
-import { PageTitle, State, TagPill } from "../../components/ui";
-import { usePage } from "../../hooks/useRequest";
-import type { Category } from "../../types";
+import { PageTitle, State, TagPill } from "@/components/ui";
+import { usePage } from "@/hooks/useRequest";
+import type { Category } from "@/types";
 
 export function CategoriesPage() {
   const list = usePage<Category>("/categories", {

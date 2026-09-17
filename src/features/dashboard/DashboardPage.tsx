@@ -11,10 +11,10 @@ import {
   YAxis,
 } from "recharts";
 import { ChevronRight } from "lucide-react";
-import { useRequest } from "../../hooks/useRequest";
-import { money, shortDate } from "../../lib/presentation";
-import { PageTitle, State } from "../../components/ui";
-import type { Overview, Trend } from "../../types";
+import { useRequest } from "@/hooks/useRequest";
+import { money, shortDate } from "@/lib/presentation";
+import { PageTitle, State } from "@/components/ui";
+import type { Overview, Trend } from "@/types";
 
 /** 仪表盘将概览、待办、趋势拆为同一功能域，所有数据通过单对象 Hook 获取。 */
 export function DashboardPage() {

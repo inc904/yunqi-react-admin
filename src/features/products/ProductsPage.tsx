@@ -2,9 +2,9 @@ import { useState } from "react";
 import "./ProductsPage.css";
 import type { FormEvent } from "react";
 import { Plus, SlidersHorizontal } from "lucide-react";
-import api from "../../api";
-import { usePage } from "../../hooks/useRequest";
-import { date, money } from "../../lib/presentation";
+import api from "@/api";
+import { usePage } from "@/hooks/useRequest";
+import { date, money } from "@/lib/presentation";
 import {
   Drawer,
   Empty,
@@ -14,8 +14,8 @@ import {
   State,
   TagPill,
   Toast,
-} from "../../components/ui";
-import type { Product } from "../../types";
+} from "@/components/ui";
+import type { Product } from "@/types";
 
 /** 商品模块独立维护筛选、分页和业务动作；通用 UI 组件不感知商品字段。 */
 export function ProductsPage({ canEdit }: { canEdit: boolean }) {

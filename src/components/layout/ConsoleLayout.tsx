@@ -10,9 +10,9 @@ import {
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { navigation } from "../../constants/navigation";
-import type { Auth } from "../../types";
-import { Modal } from "../ui";
+import { navigation } from "@/constants/navigation";
+import type { Auth } from "@/types";
+import { Modal } from "@/components/ui";
 
 export const hasPermission = (auth: Auth, code: string) =>
   auth.permissions.includes("*") || auth.permissions.includes(code);

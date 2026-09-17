@@ -2,9 +2,9 @@ import { useState } from "react";
 import "./OrdersPage.css";
 import type { FormEvent } from "react";
 import { ExternalLink, Send } from "lucide-react";
-import api from "../../api";
-import { usePage } from "../../hooks/useRequest";
-import { date, money, statusText } from "../../lib/presentation";
+import api from "@/api";
+import { usePage } from "@/hooks/useRequest";
+import { date, money, statusText } from "@/lib/presentation";
 import {
   Drawer,
   Empty,
@@ -15,8 +15,8 @@ import {
   State,
   TagPill,
   Toast,
-} from "../../components/ui";
-import type { Order, OrderStatus } from "../../types";
+} from "@/components/ui";
+import type { Order, OrderStatus } from "@/types";
 
 const orderTabs: { label: string; status: "" | OrderStatus }[] = [
   { label: "全部", status: "" },

@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { NotFoundPage } from "./app/NotFoundPage";
+import { NotFoundPage } from "@/app/NotFoundPage";
 import {
   ConsoleLayout,
   hasPermission,
-} from "./components/layout/ConsoleLayout";
-import { Login } from "./features/auth/Login";
-import { CategoriesPage } from "./features/catalog/CategoriesPage";
-import { CustomersPage } from "./features/customers/CustomersPage";
-import { DashboardPage } from "./features/dashboard/DashboardPage";
-import { BannersPage, CouponsPage } from "./features/marketing/MarketingPages";
-import { OrdersPage } from "./features/orders/OrdersPage";
-import { ProductsPage } from "./features/products/ProductsPage";
+} from "@/components/layout/ConsoleLayout";
+import { Login } from "@/features/auth/Login";
+import { CategoriesPage } from "@/features/catalog/CategoriesPage";
+import { CustomersPage } from "@/features/customers/CustomersPage";
+import { DashboardPage } from "@/features/dashboard/DashboardPage";
+import { BannersPage, CouponsPage } from "@/features/marketing/MarketingPages";
+import { OrdersPage } from "@/features/orders/OrdersPage";
+import { ProductsPage } from "@/features/products/ProductsPage";
 import {
   AdminUsersPage,
   LogsPage,
   RolesPage,
-} from "./features/system/SystemPages";
-import type { Auth } from "./types";
+} from "@/features/system/SystemPages";
+import type { Auth } from "@/types";
 
 /**
  * 根组件只做两件事：恢复登录态、声明路由。具体业务页面全部放在 features 下，

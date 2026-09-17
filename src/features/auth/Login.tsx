@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./Login.css";
 import type { FormEvent } from "react";
 import { Zap } from "lucide-react";
-import api from "../../api";
-import type { Auth } from "../../types";
+import api from "@/api";
+import type { Auth } from "@/types";
 
 /** 登录功能独立于应用壳：表单仅负责提交、保存身份状态并通知父组件切换页面。 */
 export function Login({ onLogin }: { onLogin: (auth: Auth) => void }) {

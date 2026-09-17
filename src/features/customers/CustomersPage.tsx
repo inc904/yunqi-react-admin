@@ -6,10 +6,10 @@ import {
   Pagination,
   State,
   TagPill,
-} from "../../components/ui";
-import { usePage } from "../../hooks/useRequest";
-import { date, money } from "../../lib/presentation";
-import type { Customer } from "../../types";
+} from "@/components/ui";
+import { usePage } from "@/hooks/useRequest";
+import { date, money } from "@/lib/presentation";
+import type { Customer } from "@/types";
 
 export function CustomersPage() {
   const [page, setPage] = useState(1);

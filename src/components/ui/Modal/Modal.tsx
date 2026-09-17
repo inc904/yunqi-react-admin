@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { X } from "lucide-react";
-import { Card } from "../Card/Card";
+import { Card } from "@/components/ui/Card/Card";
 import "./Modal.css";
 
 /** 使用 Card 的三个插槽统一弹窗标题、内容与操作区。 */
