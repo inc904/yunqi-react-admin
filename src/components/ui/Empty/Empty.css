@@ -1,0 +1,13 @@
+.empty {
+  height: 215px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #9ba6b7;
+}
+.empty b {
+  color: #647188;
+  font-size: 13px;
+}

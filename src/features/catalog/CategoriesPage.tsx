@@ -1,6 +1,6 @@
 import { ChevronRight, Plus } from "lucide-react";
 import "./CategoriesPage.css";
-import { PageTitle, State, TagPill } from "../../components/ui/Common";
+import { PageTitle, State, TagPill } from "../../components/ui";
 import { usePage } from "../../hooks/useRequest";
 import type { Category } from "../../types";
 

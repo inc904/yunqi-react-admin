@@ -12,7 +12,7 @@ import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { navigation } from "../../constants/navigation";
 import type { Auth } from "../../types";
-import { Modal } from "../ui/Common";
+import { Modal } from "../ui";
 
 export const hasPermission = (auth: Auth, code: string) =>
   auth.permissions.includes("*") || auth.permissions.includes(code);
@@ -120,27 +120,32 @@ export function ConsoleLayout({
         <main className="content">{children}</main>
       </section>
       {logoutConfirming && (
-        <Modal title="确认退出登录" onClose={() => setLogoutConfirming(false)}>
+        <Modal
+          title="确认退出登录"
+          onClose={() => setLogoutConfirming(false)}
+          footer={
+            <>
+              <button
+                className="secondary"
+                onClick={() => setLogoutConfirming(false)}
+              >
+                取消
+              </button>
+              <button
+                className="primary"
+                onClick={() => {
+                  setLogoutConfirming(false);
+                  onLogout();
+                }}
+              >
+                确认退出
+              </button>
+            </>
+          }
+        >
           <p className="modal-intro">
             退出后将清除当前登录状态，需要重新输入账号和密码才能进入运营台。
           </p>
-          <div className="dialog-footer">
-            <button
-              className="secondary"
-              onClick={() => setLogoutConfirming(false)}
-            >
-              取消
-            </button>
-            <button
-              className="primary"
-              onClick={() => {
-                setLogoutConfirming(false);
-                onLogout();
-              }}
-            >
-              确认退出
-            </button>
-          </div>
         </Modal>
       )}
     </div>

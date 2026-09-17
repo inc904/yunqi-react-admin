@@ -58,7 +58,7 @@ react-admin-reference/
 │  ├─ constants/navigation.ts     # 路由、菜单、权限码的集中配置
 │  ├─ components/
 │  │  ├─ layout/ConsoleLayout.tsx # 侧栏、顶栏与权限菜单
-│  │  └─ ui/Common.tsx            # Loading、分页、抽屉、Toast 等无业务 UI
+│  │  └─ ui/                      # 按组件目录收拢：Modal/、Card/、Pagination/ 等
 │  ├─ features/                   # 按业务领域拆分页面和领域交互
 │  │  ├─ auth/                    # 登录
 │  │  ├─ dashboard/               # 指标与趋势
@@ -69,7 +69,7 @@ react-admin-reference/
 │  │  └─ system/                  # 管理员、角色、日志
 │  ├─ types.ts                    # 从 mock-api/types/index.ts 提炼的页面契约
 │  ├─ styles.css                  # 样式加载入口，仅定义模块顺序
-│  └─ styles/                     # Token、布局、通用 UI、响应式样式
+│  └─ styles/                     # 仅保留 Token、应用布局与响应式规则
 ├─ .env.example
 ├─ docs/问题修复记录.md # 可持续追加的问题定位与修复记录
 └─ package.json

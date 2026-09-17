@@ -1,0 +1,24 @@
+.tag {
+  display: inline-flex;
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 11px;
+  line-height: 15px;
+  white-space: nowrap;
+}
+.tag.success {
+  color: #15803d;
+  background: #e9f8ef;
+}
+.tag.warning {
+  color: #b45309;
+  background: #fff5df;
+}
+.tag.danger {
+  color: #c2413a;
+  background: #fff0f0;
+}
+.tag.muted {
+  color: #697586;
+  background: #f0f3f6;
+}

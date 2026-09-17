@@ -14,7 +14,7 @@ import {
   State,
   TagPill,
   Toast,
-} from "../../components/ui/Common";
+} from "../../components/ui";
 import type { Product } from "../../types";
 
 /** 商品模块独立维护筛选、分页和业务动作；通用 UI 组件不感知商品字段。 */

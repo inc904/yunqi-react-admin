@@ -15,7 +15,7 @@ import {
   State,
   TagPill,
   Toast,
-} from "../../components/ui/Common";
+} from "../../components/ui";
 import type { Order, OrderStatus } from "../../types";
 
 const orderTabs: { label: string; status: "" | OrderStatus }[] = [
@@ -303,11 +303,29 @@ function ShipDialog({
     }
   }
   return (
-    <Modal title="订单发货" onClose={onClose}>
+    <Modal
+      title="订单发货"
+      onClose={onClose}
+      footer={
+        <>
+          <button type="button" className="secondary" onClick={onClose}>
+            取消
+          </button>
+          <button
+            className="primary"
+            disabled={loading}
+            form="ship-order-form"
+            type="submit"
+          >
+            {loading ? "提交中…" : "确认发货"}
+          </button>
+        </>
+      }
+    >
       <p className="modal-intro">
         订单 <b>{order.orderNo}</b> 将更新为“已发货”。
       </p>
-      <form className="dialog-form" onSubmit={submit}>
+      <form className="dialog-form" id="ship-order-form" onSubmit={submit}>
         <label>
           物流公司
           <select name="company" defaultValue="顺丰速运">
@@ -320,14 +338,6 @@ function ShipDialog({
           物流单号
           <input name="trackingNo" required placeholder="请输入物流单号" />
         </label>
-        <div className="dialog-footer">
-          <button type="button" className="secondary" onClick={onClose}>
-            取消
-          </button>
-          <button className="primary" disabled={loading}>
-            {loading ? "提交中…" : "确认发货"}
-          </button>
-        </div>
       </form>
     </Modal>
   );

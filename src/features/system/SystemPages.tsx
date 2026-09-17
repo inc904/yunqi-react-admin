@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import "./SystemPages.css";
 import { Plus } from "lucide-react";
-import {
-  PageTitle,
-  Pagination,
-  State,
-  TagPill,
-} from "../../components/ui/Common";
+import { PageTitle, Pagination, State, TagPill } from "../../components/ui";
 import { usePage } from "../../hooks/useRequest";
 import { date } from "../../lib/presentation";
 import type { AdminUser, Log, Role } from "../../types";

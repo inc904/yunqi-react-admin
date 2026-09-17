@@ -1,0 +1,29 @@
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(24, 39, 75, 0.018);
+}
+
+.card-head {
+  padding: 18px 20px 13px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.card-head h3 {
+  font-size: 15px;
+}
+
+.card-head p {
+  font-size: 12px;
+  color: #8c96a7;
+  margin-top: 3px;
+}
+
+.card-head > a {
+  font-size: 12px;
+  color: var(--brand);
+  text-decoration: none;
+}

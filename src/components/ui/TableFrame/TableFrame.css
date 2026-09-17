@@ -1,0 +1,53 @@
+.table-card {
+  margin-top: 16px;
+  overflow: hidden;
+}
+.table-card .state-card {
+  border: 0;
+  border-radius: 0;
+}
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: auto;
+}
+.table-card th {
+  height: 43px;
+  text-align: left;
+  background: #f8fafc;
+  color: #667085;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0 16px;
+  white-space: nowrap;
+}
+.table-card td {
+  border-top: 1px solid #eef1f5;
+  padding: 12px 16px;
+  color: #48566c;
+  vertical-align: middle;
+}
+.table-card tr:hover td {
+  background: #fbfdff;
+}
+.table-card td > b {
+  color: #344055;
+  font-weight: 600;
+}
+.table-card td > small {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
+}
+.align-right {
+  text-align: right !important;
+}
+.money {
+  font-family: "DM Mono", monospace;
+  color: #334155 !important;
+}
+.operations {
+  white-space: nowrap;
+  text-align: right !important;
+}

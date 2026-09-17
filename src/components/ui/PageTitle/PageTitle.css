@@ -1,0 +1,17 @@
+.page-title {
+  min-height: 57px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.page-title h1 {
+  font-size: 20px;
+  line-height: 29px;
+  color: var(--text);
+}
+.page-title p {
+  color: #8a95a7;
+  font-size: 12px;
+  margin-top: 4px;
+}

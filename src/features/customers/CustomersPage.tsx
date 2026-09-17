@@ -6,7 +6,7 @@ import {
   Pagination,
   State,
   TagPill,
-} from "../../components/ui/Common";
+} from "../../components/ui";
 import { usePage } from "../../hooks/useRequest";
 import { date, money } from "../../lib/presentation";
 import type { Customer } from "../../types";
