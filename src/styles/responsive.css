@@ -1,0 +1,28 @@
+@media (max-width: 1250px) {
+  .metrics,
+  .pending-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .global-search {
+    width: 170px;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .top-products {
+    min-height: 0;
+  }
+  .top-product {
+    display: inline-flex;
+    width: 49%;
+  }
+  .banner-grid {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    padding: 20px;
+  }
+  .filter-bar {
+    flex-wrap: wrap;
+  }
+}

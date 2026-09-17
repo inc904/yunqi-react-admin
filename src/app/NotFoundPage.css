@@ -1,0 +1,44 @@
+/* 应用级异常页面：与业务 Feature 样式隔离。 */
+.not-found-page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+}
+.not-found-icon {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+  background: #eaf1ff;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+.not-found-code {
+  font:
+    700 48px "DM Mono",
+    monospace;
+  letter-spacing: 2px;
+  color: #bed0f7;
+  line-height: 1;
+}
+.not-found-page h1 {
+  font-size: 20px;
+  margin: 12px 0 7px;
+}
+.not-found-page p {
+  font-size: 13px;
+  color: #7c899d;
+}
+.not-found-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+.not-found-actions a {
+  text-decoration: none;
+}

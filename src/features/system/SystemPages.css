@@ -1,0 +1,84 @@
+.admin-cell {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.admin-cell img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.roles .role-list {
+  padding: 13px;
+}
+.role-list .card-head {
+  padding: 5px 6px 14px;
+}
+.role-list .card-head h3 {
+  font-size: 15px;
+}
+.role-item {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  border-radius: 6px;
+  padding: 11px 10px;
+  color: #526078;
+}
+.role-item:hover,
+.role-item.selected {
+  background: #eef4ff;
+}
+.role-item.selected b {
+  color: var(--brand);
+}
+.role-item b {
+  font-size: 13px;
+}
+.role-item span {
+  font-size: 11px;
+  color: #8995a7;
+}
+.permissions {
+  padding: 22px;
+}
+.permissions h3 {
+  font-size: 16px;
+}
+.permissions > p {
+  font-size: 12px;
+  color: #8490a2;
+  margin: 5px 0 20px;
+}
+.permission-list {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.permission-list label {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  border-bottom: 1px solid #eef1f5;
+  min-height: 45px;
+  padding: 0 13px;
+  font-size: 13px;
+  color: #445269;
+}
+.permission-list label:last-child {
+  border: 0;
+}
+.permission-list small {
+  font-size: 11px;
+}
+.action-dot {
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: #eef4ff;
+  color: #4265b6;
+}

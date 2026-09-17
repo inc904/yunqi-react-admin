@@ -1,0 +1,31 @@
+.split-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 16px;
+}
+.category-tree {
+  padding: 12px;
+}
+.category-tree h3 {
+  font-size: 15px;
+  padding: 8px;
+}
+.tree-item {
+  border: 0;
+  background: #fff;
+  width: 100%;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-align: left;
+  border-radius: 5px;
+  color: #475569;
+  padding: 0 7px;
+}
+.tree-item:hover {
+  background: #f3f6fb;
+}
+.tree-item small {
+  margin-left: auto;
+}

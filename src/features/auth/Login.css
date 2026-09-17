@@ -1,0 +1,131 @@
+/* 登录页不属于应用壳；与 Login.tsx 并置以防背景与尺寸规则影响后台页面。 */
+.login-page {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  height: 100vh;
+  min-height: 650px;
+  background: #fff;
+}
+.login-aside {
+  background: #17213b;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  padding: 0 9.5%;
+  display: flex;
+  flex-direction: column;
+}
+.login-aside:before {
+  content: "";
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #31559c 0%, #17213b 68%);
+  right: -340px;
+  bottom: -345px;
+  opacity: 0.78;
+}
+.login-aside .brand {
+  padding: 0;
+  height: 75px;
+  z-index: 1;
+}
+.login-aside .brand > span:last-child {
+  border-color: #65718a;
+  color: #b7c3d9;
+}
+.login-copy {
+  margin: auto 0 24%;
+  z-index: 1;
+}
+.eyebrow {
+  font:
+    600 11px "DM Mono",
+    monospace;
+  letter-spacing: 1.4px;
+  color: #6999f6;
+}
+.login-copy h1 {
+  font-size: 37px;
+  line-height: 1.42;
+  margin: 17px 0;
+  color: #fff;
+  letter-spacing: 0.7px;
+}
+.login-copy p {
+  font-size: 15px;
+  color: #a7b5cd;
+}
+.login-orbs {
+  position: absolute;
+  right: 16%;
+  bottom: 15%;
+  width: 190px;
+  height: 190px;
+  border: 1px solid #759ae0;
+  border-radius: 50%;
+  opacity: 0.45;
+}
+.login-orbs:after {
+  content: "";
+  position: absolute;
+  inset: 31px;
+  border: 1px solid #83a4e4;
+  border-radius: 50%;
+}
+.login-form-wrap {
+  display: grid;
+  place-items: center;
+}
+.login-form {
+  width: 360px;
+}
+.login-form h2 {
+  font-size: 25px;
+  margin: 9px 0 8px;
+}
+.login-form > p {
+  font-size: 13px;
+  color: #8a96a8;
+  margin-bottom: 32px;
+}
+.login-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: #526078;
+  margin: 16px 0;
+}
+.login-form input {
+  height: 42px;
+  border: 1px solid #dbe2eb;
+  border-radius: 6px;
+  padding: 0 12px;
+}
+.login-form .primary {
+  margin-top: 12px;
+}
+.error-banner {
+  font-size: 12px;
+  color: #c33737;
+  background: #fff1f1;
+  padding: 9px;
+  border-radius: 5px;
+}
+.demo-tip {
+  margin-top: 26px;
+  border-radius: 7px;
+  background: #f3f6fc;
+  padding: 13px 15px;
+  display: flex;
+  gap: 12px;
+  color: #728098;
+  font-size: 11px;
+  line-height: 18px;
+}
+.demo-tip b {
+  color: #3c4b64;
+  font-size: 12px;
+  white-space: nowrap;
+}

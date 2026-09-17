@@ -1,0 +1,40 @@
+.member {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.member > span {
+  width: 29px;
+  height: 29px;
+  background: #e5ecfd;
+  color: #4265bb;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+}
+.member b {
+  font-size: 13px;
+  color: #344055;
+}
+.level {
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+.level.normal {
+  background: #f1f4f7;
+  color: #697586;
+}
+.level.silver {
+  background: #edf3f8;
+  color: #64748b;
+}
+.level.gold {
+  background: #fff4d9;
+  color: #bb7913;
+}
+.level.diamond {
+  background: #f2eaff;
+  color: #7c4dbe;
+}

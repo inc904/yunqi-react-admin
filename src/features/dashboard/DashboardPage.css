@@ -1,0 +1,183 @@
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.metric-card {
+  height: 118px;
+  padding: 21px;
+  display: flex;
+  gap: 15px;
+  background: #fff;
+  border: 1px solid #e5eaf0;
+  border-radius: 8px;
+}
+.metric-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.metric-icon.blue {
+  background: #e9f0ff;
+  color: #2563eb;
+}
+.metric-icon.violet {
+  background: #f0ecff;
+  color: #7856dc;
+}
+.metric-icon.orange {
+  background: #fff2df;
+  color: #df8615;
+}
+.metric-icon.green {
+  background: #e5f7ee;
+  color: #1d9a61;
+}
+.metric-card > div {
+  display: grid;
+  align-content: start;
+}
+.metric-card small {
+  font-size: 12px;
+}
+.metric-card strong {
+  font-family: "DM Mono", monospace;
+  font-size: 22px;
+  line-height: 28px;
+  color: #1d2939;
+  margin-top: 2px;
+}
+.metric-card em {
+  font-size: 11px;
+  font-style: normal;
+}
+.up {
+  color: #16a34a;
+}
+.down {
+  color: #dc2626;
+}
+.pending-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 16px 0 20px;
+}
+.pending-card {
+  height: 86px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: left;
+  padding: 15px 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  color: #637083;
+}
+.pending-card:hover {
+  border-color: #b7cdfb;
+  box-shadow: 0 3px 9px #dce8ff55;
+}
+.pending-card span {
+  font-size: 13px;
+}
+.pending-card b {
+  color: #172033;
+  font:
+    600 24px "DM Mono",
+    monospace;
+}
+.pending-card small {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(500px, 2fr) minmax(310px, 1fr);
+  gap: 16px;
+}
+.segmented {
+  display: flex;
+  padding: 2px;
+  background: #f4f6f9;
+  border-radius: 5px;
+}
+.segmented button {
+  height: 25px;
+  border: 0;
+  background: transparent;
+  padding: 0 9px;
+  font-size: 11px;
+  color: #768297;
+  border-radius: 4px;
+}
+.segmented button.selected {
+  background: #fff;
+  color: var(--brand);
+  box-shadow: 0 1px 3px #cad0d9;
+}
+.chart {
+  padding: 0 12px 14px;
+}
+.recharts-wrapper {
+  font-size: 11px;
+  color: #97a1b2;
+}
+.top-products {
+  min-height: 350px;
+}
+.top-product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+}
+.top-product img {
+  width: 39px;
+  height: 39px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.top-product > div {
+  display: grid;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+.top-product strong {
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.top-product small {
+  font-size: 11px;
+}
+.top-product > span,
+.rank {
+  font:
+    12px "DM Mono",
+    monospace;
+  color: #334155;
+}
+.rank {
+  font-weight: 600;
+  width: 15px;
+  color: #9aa4b5;
+}
+.rank-1 {
+  color: #e99d1c;
+}
+.rank-2 {
+  color: #8c9aac;
+}
+.rank-3 {
+  color: #b47748;
+}
