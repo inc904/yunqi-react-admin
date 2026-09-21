@@ -20,7 +20,7 @@
 }
 .not-found-code {
   font:
-    700 48px "DM Mono",
+    700 48px 'DM Mono',
     monospace;
   letter-spacing: 2px;
   color: #bed0f7;

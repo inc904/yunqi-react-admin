@@ -1,16 +1,16 @@
-import { ChevronRight, Plus } from "lucide-react";
-import "./CategoriesPage.css";
-import { PageTitle, State, TagPill } from "@/components/ui";
-import { usePage } from "@/hooks/useRequest";
-import type { Category } from "@/types";
+import { ChevronRight, Plus } from 'lucide-react'
+import './CategoriesPage.css'
+import { PageTitle, State, TagPill } from '@/components/ui'
+import { usePage } from '@/hooks/useRequest'
+import type { Category } from '@/types'
 
 export function CategoriesPage() {
-  const list = usePage<Category>("/categories", {
+  const list = usePage<Category>('/categories', {
     page: 1,
     pageSize: 50,
-    _sort: "sort",
-    _order: "asc",
-  });
+    _sort: 'sort',
+    _order: 'asc',
+  })
   return (
     <>
       <PageTitle
@@ -76,5 +76,5 @@ export function CategoriesPage() {
         </section>
       </section>
     </>
-  );
+  )
 }

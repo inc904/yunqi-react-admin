@@ -1,13 +1,13 @@
-import { Compass, House, Undo2 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import "./NotFoundPage.css";
+import { Compass, House, Undo2 } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import './NotFoundPage.css'
 
 /**
  * 前端 404：BrowserRouter 已经成功加载应用，但当前 URL 没有匹配的页面路由。
  * 它不是 API 404，也不是服务器直接返回的 HTTP 404；三者需要分别处理。
  */
 export function NotFoundPage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <section className="not-found-page" aria-labelledby="not-found-title">
       <div className="not-found-icon">
@@ -27,5 +27,5 @@ export function NotFoundPage() {
         </button>
       </div>
     </section>
-  );
+  )
 }

@@ -45,7 +45,7 @@
   font-size: 12px;
 }
 .metric-card strong {
-  font-family: "DM Mono", monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 22px;
   line-height: 28px;
   color: #1d2939;
@@ -88,7 +88,7 @@
 .pending-card b {
   color: #172033;
   font:
-    600 24px "DM Mono",
+    600 24px 'DM Mono',
     monospace;
 }
 .pending-card small {
@@ -163,7 +163,7 @@
 .top-product > span,
 .rank {
   font:
-    12px "DM Mono",
+    12px 'DM Mono',
     monospace;
   color: #334155;
 }

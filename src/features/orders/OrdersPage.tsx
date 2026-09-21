@@ -1,64 +1,51 @@
-import { useState } from "react";
-import "./OrdersPage.css";
-import type { FormEvent } from "react";
-import { ExternalLink, Send } from "lucide-react";
-import api from "@/api";
-import { usePage } from "@/hooks/useRequest";
-import { date, money, statusText } from "@/lib/presentation";
-import {
-  Drawer,
-  Empty,
-  FilterBar,
-  Modal,
-  PageTitle,
-  Pagination,
-  State,
-  TagPill,
-  Toast,
-} from "@/components/ui";
-import type { Order, OrderStatus } from "@/types";
+import { useState } from 'react'
+import './OrdersPage.css'
+import type { FormEvent } from 'react'
+import { ExternalLink, Send } from 'lucide-react'
+import api from '@/api'
+import { usePage } from '@/hooks/useRequest'
+import { date, money, statusText } from '@/lib/presentation'
+import { Drawer, Empty, FilterBar, Modal, PageTitle, Pagination, State, TagPill, Toast } from '@/components/ui'
+import type { Order, OrderStatus } from '@/types'
 
-const orderTabs: { label: string; status: "" | OrderStatus }[] = [
-  { label: "全部", status: "" },
-  { label: "待付款", status: "pending_payment" },
-  { label: "待发货", status: "pending_shipment" },
-  { label: "已发货", status: "shipped" },
-  { label: "已完成", status: "completed" },
-  { label: "退款/售后", status: "refunding" },
-];
+const orderTabs: { label: string; status: '' | OrderStatus }[] = [
+  { label: '全部', status: '' },
+  { label: '待付款', status: 'pending_payment' },
+  { label: '待发货', status: 'pending_shipment' },
+  { label: '已发货', status: 'shipped' },
+  { label: '已完成', status: 'completed' },
+  { label: '退款/售后', status: 'refunding' },
+]
 
 /** 订单的“发货”使用领域接口而不是 PATCH status，让服务端执行状态校验和写日志。 */
 export function OrdersPage({ canEdit }: { canEdit: boolean }) {
-  const [page, setPage] = useState(1);
-  const [tab, setTab] = useState<"" | OrderStatus>("");
-  const [keyword, setKeyword] = useState("");
-  const [selected, setSelected] = useState<Order | null>(null);
-  const [shipping, setShipping] = useState<Order | null>(null);
-  const [message, setMessage] = useState("");
-  const list = usePage<Order>("/orders", {
+  const [page, setPage] = useState(1)
+  const [tab, setTab] = useState<'' | OrderStatus>('')
+  const [keyword, setKeyword] = useState('')
+  const [selected, setSelected] = useState<Order | null>(null)
+  const [shipping, setShipping] = useState<Order | null>(null)
+  const [message, setMessage] = useState('')
+  const list = usePage<Order>('/orders', {
     page,
     pageSize: 8,
-    _sort: "createdAt",
-    _order: "desc",
+    _sort: 'createdAt',
+    _order: 'desc',
     ...(tab ? { status: tab } : {}),
     ...(keyword ? { orderNo_like: keyword } : {}),
-  });
+  })
   return (
     <>
-      <PageTitle
-        title="订单管理"
-        description="集中处理订单履约、物流与售后状态。"
-      />
-      {message && <Toast message={message} onClose={() => setMessage("")} />}
+      <PageTitle title="订单管理" description="集中处理订单履约、物流与售后状态。" />
+      {message && <Toast message={message} onClose={() => setMessage('')} />}
       <section className="card tabs-card">
         <div className="tabs">
           {orderTabs.map((item) => (
             <button
-              className={tab === item.status ? "active" : ""}
+              className={tab === item.status ? 'active' : ''}
               key={item.label}
               onClick={() => {
-                setTab(item.status);
-                setPage(1);
+                setTab(item.status)
+                setPage(1)
               }}
             >
               {item.label}
@@ -67,24 +54,20 @@ export function OrdersPage({ canEdit }: { canEdit: boolean }) {
         </div>
         <form
           onSubmit={(event) => {
-            event.preventDefault();
-            setPage(1);
-            list.reload();
+            event.preventDefault()
+            setPage(1)
+            list.reload()
           }}
         >
           <FilterBar
             onReset={() => {
-              setKeyword("");
-              setTab("");
+              setKeyword('')
+              setTab('')
             }}
           >
             <label>
               订单号
-              <input
-                value={keyword}
-                onChange={(event) => setKeyword(event.target.value)}
-                placeholder="搜索订单号"
-              />
+              <input value={keyword} onChange={(event) => setKeyword(event.target.value)} placeholder="搜索订单号" />
             </label>
           </FilterBar>
         </form>
@@ -123,35 +106,26 @@ export function OrdersPage({ canEdit }: { canEdit: boolean }) {
                       </div>
                     </td>
                     <td>{order.customerName}</td>
-                    <td className="align-right money">
-                      {money(order.payableAmount)}
-                    </td>
+                    <td className="align-right money">{money(order.payableAmount)}</td>
                     <td>
-                      {order.paymentMethod === "wechat"
-                        ? "微信支付"
-                        : order.paymentMethod === "alipay"
-                          ? "支付宝"
-                          : "—"}
+                      {order.paymentMethod === 'wechat'
+                        ? '微信支付'
+                        : order.paymentMethod === 'alipay'
+                          ? '支付宝'
+                          : '—'}
                     </td>
                     <td>
                       <TagPill value={order.status} />
                     </td>
                     <td className="operations">
-                      <button
-                        className="link-button"
-                        onClick={() => setSelected(order)}
-                      >
+                      <button className="link-button" onClick={() => setSelected(order)}>
                         详情
                       </button>
-                      {canEdit &&
-                        ["paid", "pending_shipment"].includes(order.status) && (
-                          <button
-                            className="link-button"
-                            onClick={() => setShipping(order)}
-                          >
-                            发货
-                          </button>
-                        )}
+                      {canEdit && ['paid', 'pending_shipment'].includes(order.status) && (
+                        <button className="link-button" onClick={() => setShipping(order)}>
+                          发货
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -163,31 +137,23 @@ export function OrdersPage({ canEdit }: { canEdit: boolean }) {
         </State>
         <Pagination meta={list.meta} page={page} setPage={setPage} />
       </section>
-      {selected && (
-        <OrderDrawer order={selected} onClose={() => setSelected(null)} />
-      )}
+      {selected && <OrderDrawer order={selected} onClose={() => setSelected(null)} />}
       {shipping && (
         <ShipDialog
           order={shipping}
           onClose={() => setShipping(null)}
           onDone={() => {
-            setShipping(null);
-            setMessage("订单已发货，物流信息已更新");
-            list.reload();
+            setShipping(null)
+            setMessage('订单已发货，物流信息已更新')
+            list.reload()
           }}
         />
       )}
     </>
-  );
+  )
 }
 
-function OrderDrawer({
-  order,
-  onClose,
-}: {
-  order: Order;
-  onClose: () => void;
-}) {
+function OrderDrawer({ order, onClose }: { order: Order; onClose: () => void }) {
   return (
     <Drawer title="订单详情" onClose={onClose}>
       <div className="order-detail">
@@ -274,32 +240,24 @@ function OrderDrawer({
         )}
       </div>
     </Drawer>
-  );
+  )
 }
-function ShipDialog({
-  order,
-  onClose,
-  onDone,
-}: {
-  order: Order;
-  onClose: () => void;
-  onDone: () => void;
-}) {
-  const [loading, setLoading] = useState(false);
+function ShipDialog({ order, onClose, onDone }: { order: Order; onClose: () => void; onDone: () => void }) {
+  const [loading, setLoading] = useState(false)
   async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    setLoading(true);
+    event.preventDefault()
+    const form = new FormData(event.currentTarget)
+    setLoading(true)
     try {
       await api.post(`/orders/${order.id}/ship`, {
-        company: form.get("company"),
-        trackingNo: form.get("trackingNo"),
-      });
-      onDone();
+        company: form.get('company'),
+        trackingNo: form.get('trackingNo'),
+      })
+      onDone()
     } catch (error) {
-      alert(error instanceof Error ? error.message : "发货失败");
+      alert(error instanceof Error ? error.message : '发货失败')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
   return (
@@ -311,13 +269,8 @@ function ShipDialog({
           <button type="button" className="secondary" onClick={onClose}>
             取消
           </button>
-          <button
-            className="primary"
-            disabled={loading}
-            form="ship-order-form"
-            type="submit"
-          >
-            {loading ? "提交中…" : "确认发货"}
+          <button className="primary" disabled={loading} form="ship-order-form" type="submit">
+            {loading ? '提交中…' : '确认发货'}
           </button>
         </>
       }
@@ -340,5 +293,5 @@ function ShipDialog({
         </label>
       </form>
     </Modal>
-  );
+  )
 }

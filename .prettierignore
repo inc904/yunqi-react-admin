@@ -1,0 +1,18 @@
+# 依赖与构建产物
+node_modules/
+dist/
+coverage/
+
+# 包管理器与工具生成的文件
+package-lock.json
+*.tsbuildinfo
+
+# 图片、字体等二进制文件
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.woff
+*.woff2

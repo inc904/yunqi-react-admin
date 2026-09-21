@@ -47,7 +47,7 @@
 }
 .banner-card p {
   font:
-    11px "DM Mono",
+    11px 'DM Mono',
     monospace;
   color: #8691a3;
 }

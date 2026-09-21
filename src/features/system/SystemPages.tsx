@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import "./SystemPages.css";
-import { Plus } from "lucide-react";
-import { PageTitle, Pagination, State, TagPill } from "@/components/ui";
-import { usePage } from "@/hooks/useRequest";
-import { date } from "@/lib/presentation";
-import type { AdminUser, Log, Role } from "@/types";
+import { useEffect, useState } from 'react'
+import './SystemPages.css'
+import { Plus } from 'lucide-react'
+import { PageTitle, Pagination, State, TagPill } from '@/components/ui'
+import { usePage } from '@/hooks/useRequest'
+import { date } from '@/lib/presentation'
+import type { AdminUser, Log, Role } from '@/types'
 
 /** 系统设置下的页面共享只读/配置型表格，按领域集中在 system 模块。 */
 export function AdminUsersPage() {
-  const list = usePage<AdminUser>("/adminUsers", { page: 1, pageSize: 20 });
+  const list = usePage<AdminUser>('/adminUsers', { page: 1, pageSize: 20 })
   return (
     <>
       <PageTitle
@@ -44,7 +44,7 @@ export function AdminUsersPage() {
                     </div>
                   </td>
                   <td>{item.nickname}</td>
-                  <td>{item.roleIds.join("、")}</td>
+                  <td>{item.roleIds.join('、')}</td>
                   <td>{date(item.lastLoginAt)}</td>
                   <td>
                     <TagPill value={item.status} />
@@ -60,29 +60,18 @@ export function AdminUsersPage() {
         </State>
       </section>
     </>
-  );
+  )
 }
 export function RolesPage() {
-  const list = usePage<Role>("/roles", { page: 1, pageSize: 20 });
-  const [selected, setSelected] = useState<Role | null>(null);
+  const list = usePage<Role>('/roles', { page: 1, pageSize: 20 })
+  const [selected, setSelected] = useState<Role | null>(null)
   useEffect(() => {
-    if (!selected && list.items[0]) setSelected(list.items[0]);
-  }, [list.items, selected]);
-  const permissions = [
-    "dashboard:view",
-    "product:*",
-    "order:*",
-    "customer:view",
-    "coupon:*",
-    "banner:*",
-    "system:*",
-  ];
+    if (!selected && list.items[0]) setSelected(list.items[0])
+  }, [list.items, selected])
+  const permissions = ['dashboard:view', 'product:*', 'order:*', 'customer:view', 'coupon:*', 'banner:*', 'system:*']
   return (
     <>
-      <PageTitle
-        title="角色权限"
-        description="路由、菜单与操作按钮统一使用权限码控制。"
-      />
+      <PageTitle title="角色权限" description="路由、菜单与操作按钮统一使用权限码控制。" />
       <section className="split-layout roles">
         <aside className="card role-list">
           <div className="card-head">
@@ -94,7 +83,7 @@ export function RolesPage() {
           {list.items.map((role) => (
             <button
               key={role.id}
-              className={`role-item ${selected?.id === role.id ? "selected" : ""}`}
+              className={`role-item ${selected?.id === role.id ? 'selected' : ''}`}
               onClick={() => setSelected(role)}
             >
               <b>{role.name}</b>
@@ -103,20 +92,17 @@ export function RolesPage() {
           ))}
         </aside>
         <section className="card permissions">
-          <h3>{selected?.name || "选择角色"}</h3>
+          <h3>{selected?.name || '选择角色'}</h3>
           <p>勾选的权限会以字符串数组保存到 `permissions` 字段。</p>
           <div className="permission-list">
             {permissions.map((item) => (
               <label key={item}>
                 <input
                   type="checkbox"
-                  defaultChecked={
-                    selected?.permissions.includes("*") ||
-                    selected?.permissions.includes(item)
-                  }
+                  defaultChecked={selected?.permissions.includes('*') || selected?.permissions.includes(item)}
                 />
                 <span>{item}</span>
-                <small>{item.split(":")[0]} 模块权限</small>
+                <small>{item.split(':')[0]} 模块权限</small>
               </label>
             ))}
           </div>
@@ -124,22 +110,19 @@ export function RolesPage() {
         </section>
       </section>
     </>
-  );
+  )
 }
 export function LogsPage() {
-  const [page, setPage] = useState(1);
-  const list = usePage<Log>("/operationLogs", {
+  const [page, setPage] = useState(1)
+  const list = usePage<Log>('/operationLogs', {
     page,
     pageSize: 10,
-    _sort: "createdAt",
-    _order: "desc",
-  });
+    _sort: 'createdAt',
+    _order: 'desc',
+  })
   return (
     <>
-      <PageTitle
-        title="操作日志"
-        description="记录账号在运营后台中的关键操作，支持审计追溯。"
-      />
+      <PageTitle title="操作日志" description="记录账号在运营后台中的关键操作，支持审计追溯。" />
       <section className="card table-card">
         <State loading={list.loading} error={list.error}>
           <table>
@@ -174,5 +157,5 @@ export function LogsPage() {
         <Pagination meta={list.meta} page={page} setPage={setPage} />
       </section>
     </>
-  );
+  )
 }

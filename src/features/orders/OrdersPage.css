@@ -20,7 +20,7 @@
   font-weight: 600;
 }
 .tabs button.active:after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -82,7 +82,7 @@
   padding: 0 0 17px;
 }
 .timeline > div:before {
-  content: "";
+  content: '';
   position: absolute;
   height: 100%;
   left: 5px;
@@ -148,7 +148,7 @@
 }
 .detail-product > span {
   font:
-    12px "DM Mono",
+    12px 'DM Mono',
     monospace;
 }
 .totals {
@@ -186,7 +186,7 @@
 }
 .logistics span {
   font:
-    11px "DM Mono",
+    11px 'DM Mono',
     monospace;
   color: #5873aa;
 }

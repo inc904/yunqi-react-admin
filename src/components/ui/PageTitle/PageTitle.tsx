@@ -1,15 +1,7 @@
-import type { ReactNode } from "react";
-import "./PageTitle.css";
+import type { ReactNode } from 'react'
+import './PageTitle.css'
 
-export function PageTitle({
-  title,
-  description,
-  action,
-}: {
-  title: string;
-  description?: string;
-  action?: ReactNode;
-}) {
+export function PageTitle({ title, description, action }: { title: string; description?: string; action?: ReactNode }) {
   return (
     <div className="page-title">
       <div>
@@ -18,5 +10,5 @@ export function PageTitle({
       </div>
       {action}
     </div>
-  );
+  )
 }

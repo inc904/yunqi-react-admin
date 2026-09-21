@@ -1,17 +1,17 @@
-import { Plus } from "lucide-react";
-import "./MarketingPages.css";
-import { PageTitle, State, TagPill } from "@/components/ui";
-import { usePage } from "@/hooks/useRequest";
-import { date } from "@/lib/presentation";
-import type { Banner, Coupon } from "@/types";
+import { Plus } from 'lucide-react'
+import './MarketingPages.css'
+import { PageTitle, State, TagPill } from '@/components/ui'
+import { usePage } from '@/hooks/useRequest'
+import { date } from '@/lib/presentation'
+import type { Banner, Coupon } from '@/types'
 
 export function CouponsPage() {
-  const list = usePage<Coupon>("/coupons", {
+  const list = usePage<Coupon>('/coupons', {
     page: 1,
     pageSize: 20,
-    _sort: "startAt",
-    _order: "desc",
-  });
+    _sort: 'startAt',
+    _order: 'desc',
+  })
   return (
     <>
       <PageTitle
@@ -43,9 +43,7 @@ export function CouponsPage() {
                     <b>{coupon.name}</b>
                   </td>
                   <td>
-                    {coupon.type === "amount"
-                      ? `满 ${coupon.minAmount} 减 ${coupon.value}`
-                      : `${coupon.value} 折`}
+                    {coupon.type === 'amount' ? `满 ${coupon.minAmount} 减 ${coupon.value}` : `${coupon.value} 折`}
                   </td>
                   <td>
                     <div className="progress-label">
@@ -63,8 +61,8 @@ export function CouponsPage() {
                     </div>
                   </td>
                   <td>
-                    {date(coupon.startAt).split(" ")[0]} 至<br />
-                    {date(coupon.endAt).split(" ")[0]}
+                    {date(coupon.startAt).split(' ')[0]} 至<br />
+                    {date(coupon.endAt).split(' ')[0]}
                   </td>
                   <td>
                     <TagPill value={coupon.status} />
@@ -76,15 +74,15 @@ export function CouponsPage() {
         </State>
       </section>
     </>
-  );
+  )
 }
 export function BannersPage() {
-  const list = usePage<Banner>("/banners", {
+  const list = usePage<Banner>('/banners', {
     page: 1,
     pageSize: 20,
-    _sort: "sort",
-    _order: "asc",
-  });
+    _sort: 'sort',
+    _order: 'asc',
+  })
   return (
     <>
       <PageTitle
@@ -111,8 +109,7 @@ export function BannersPage() {
                 <div className="banner-meta">
                   <span>排序 {item.sort}</span>
                   <span>
-                    {date(item.startAt).split(" ")[0]} —{" "}
-                    {date(item.endAt).split(" ")[0]}
+                    {date(item.startAt).split(' ')[0]} — {date(item.endAt).split(' ')[0]}
                   </span>
                   <button className="link-button">编辑</button>
                 </div>
@@ -122,5 +119,5 @@ export function BannersPage() {
         </State>
       </div>
     </>
-  );
+  )
 }

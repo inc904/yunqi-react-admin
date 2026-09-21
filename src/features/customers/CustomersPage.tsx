@@ -1,66 +1,50 @@
-import { useState } from "react";
-import "./CustomersPage.css";
-import {
-  FilterBar,
-  PageTitle,
-  Pagination,
-  State,
-  TagPill,
-} from "@/components/ui";
-import { usePage } from "@/hooks/useRequest";
-import { date, money } from "@/lib/presentation";
-import type { Customer } from "@/types";
+import { useState } from 'react'
+import './CustomersPage.css'
+import { FilterBar, PageTitle, Pagination, State, TagPill } from '@/components/ui'
+import { usePage } from '@/hooks/useRequest'
+import { date, money } from '@/lib/presentation'
+import type { Customer } from '@/types'
 
 export function CustomersPage() {
-  const [page, setPage] = useState(1);
-  const [search, setSearch] = useState("");
-  const [level, setLevel] = useState("");
-  const list = usePage<Customer>("/customers", {
+  const [page, setPage] = useState(1)
+  const [search, setSearch] = useState('')
+  const [level, setLevel] = useState('')
+  const list = usePage<Customer>('/customers', {
     page,
     pageSize: 10,
     ...(search ? { q: search } : {}),
     ...(level ? { level } : {}),
-  });
+  })
   const names = {
-    normal: "普通会员",
-    silver: "白银会员",
-    gold: "黄金会员",
-    diamond: "钻石会员",
-  };
+    normal: '普通会员',
+    silver: '白银会员',
+    gold: '黄金会员',
+    diamond: '钻石会员',
+  }
   return (
     <>
-      <PageTitle
-        title="会员管理"
-        description="查看会员价值，并及时发现异常或高价值用户。"
-      />
+      <PageTitle title="会员管理" description="查看会员价值，并及时发现异常或高价值用户。" />
       <section className="card">
         <form
           onSubmit={(event) => {
-            event.preventDefault();
-            setPage(1);
-            list.reload();
+            event.preventDefault()
+            setPage(1)
+            list.reload()
           }}
         >
           <FilterBar
             onReset={() => {
-              setSearch("");
-              setLevel("");
+              setSearch('')
+              setLevel('')
             }}
           >
             <label>
               会员搜索
-              <input
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="姓名或手机号"
-              />
+              <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="姓名或手机号" />
             </label>
             <label>
               会员等级
-              <select
-                value={level}
-                onChange={(event) => setLevel(event.target.value)}
-              >
+              <select value={level} onChange={(event) => setLevel(event.target.value)}>
                 <option value="">全部等级</option>
                 <option value="normal">普通会员</option>
                 <option value="silver">白银会员</option>
@@ -96,14 +80,10 @@ export function CustomersPage() {
                   </td>
                   <td>{item.mobile}</td>
                   <td>
-                    <span className={`level ${item.level}`}>
-                      {names[item.level]}
-                    </span>
+                    <span className={`level ${item.level}`}>{names[item.level]}</span>
                   </td>
                   <td className="align-right">{item.totalOrders}</td>
-                  <td className="align-right money">
-                    {money(item.totalSpent)}
-                  </td>
+                  <td className="align-right money">{money(item.totalSpent)}</td>
                   <td>
                     <TagPill value={item.status} />
                   </td>
@@ -116,5 +96,5 @@ export function CustomersPage() {
         <Pagination meta={list.meta} page={page} setPage={setPage} />
       </section>
     </>
-  );
+  )
 }

@@ -1,97 +1,76 @@
-import { useState } from "react";
-import "./ProductsPage.css";
-import type { FormEvent } from "react";
-import { Plus, SlidersHorizontal } from "lucide-react";
-import api from "@/api";
-import { usePage } from "@/hooks/useRequest";
-import { date, money } from "@/lib/presentation";
-import {
-  Drawer,
-  Empty,
-  FilterBar,
-  PageTitle,
-  Pagination,
-  State,
-  TagPill,
-  Toast,
-} from "@/components/ui";
-import type { Product } from "@/types";
+import { useState } from 'react'
+import './ProductsPage.css'
+import type { FormEvent } from 'react'
+import { Plus, SlidersHorizontal } from 'lucide-react'
+import api from '@/api'
+import { usePage } from '@/hooks/useRequest'
+import { date, money } from '@/lib/presentation'
+import { Drawer, Empty, FilterBar, PageTitle, Pagination, State, TagPill, Toast } from '@/components/ui'
+import type { Product } from '@/types'
 
 /** 商品模块独立维护筛选、分页和业务动作；通用 UI 组件不感知商品字段。 */
 export function ProductsPage({ canEdit }: { canEdit: boolean }) {
-  const [page, setPage] = useState(1);
-  const [keyword, setKeyword] = useState("");
-  const [status, setStatus] = useState("");
-  const [drawer, setDrawer] = useState<Product | "new" | null>(null);
-  const [message, setMessage] = useState("");
-  const list = usePage<Product>("/products", {
+  const [page, setPage] = useState(1)
+  const [keyword, setKeyword] = useState('')
+  const [status, setStatus] = useState('')
+  const [drawer, setDrawer] = useState<Product | 'new' | null>(null)
+  const [message, setMessage] = useState('')
+  const list = usePage<Product>('/products', {
     page,
     pageSize: 10,
-    _sort: "sales",
-    _order: "desc",
+    _sort: 'sales',
+    _order: 'desc',
     ...(keyword ? { name_like: keyword } : {}),
     ...(status ? { status } : {}),
-  });
+  })
   async function changeStatus(product: Product) {
-    const next = product.status === "on_sale" ? "off-shelf" : "publish";
-    if (
-      !confirm(
-        `确认${next === "publish" ? "上架" : "下架"}「${product.name}」吗？`,
-      )
-    )
-      return;
+    const next = product.status === 'on_sale' ? 'off-shelf' : 'publish'
+    if (!confirm(`确认${next === 'publish' ? '上架' : '下架'}「${product.name}」吗？`)) return
     try {
-      await api.post(`/products/${product.id}/${next}`);
-      setMessage(next === "publish" ? "商品已上架" : "商品已下架");
-      list.reload();
+      await api.post(`/products/${product.id}/${next}`)
+      setMessage(next === 'publish' ? '商品已上架' : '商品已下架')
+      list.reload()
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "操作失败");
+      setMessage(error instanceof Error ? error.message : '操作失败')
     }
   }
   return (
     <>
       <PageTitle
         title="商品管理"
-        description={`管理在售商品、库存与 SKU。${list.meta ? ` 当前共 ${list.meta.total} 件商品` : ""}`}
+        description={`管理在售商品、库存与 SKU。${list.meta ? ` 当前共 ${list.meta.total} 件商品` : ''}`}
         action={
           canEdit ? (
-            <button className="primary" onClick={() => setDrawer("new")}>
+            <button className="primary" onClick={() => setDrawer('new')}>
               <Plus size={16} />
               新建商品
             </button>
           ) : undefined
         }
       />
-      {message && <Toast message={message} onClose={() => setMessage("")} />}
+      {message && <Toast message={message} onClose={() => setMessage('')} />}
       <form
         onSubmit={(event) => {
-          event.preventDefault();
-          setPage(1);
-          list.reload();
+          event.preventDefault()
+          setPage(1)
+          list.reload()
         }}
         className="card"
       >
         <FilterBar
           onReset={() => {
-            setKeyword("");
-            setStatus("");
-            setPage(1);
+            setKeyword('')
+            setStatus('')
+            setPage(1)
           }}
         >
           <label>
             商品名称
-            <input
-              value={keyword}
-              onChange={(event) => setKeyword(event.target.value)}
-              placeholder="请输入商品名称"
-            />
+            <input value={keyword} onChange={(event) => setKeyword(event.target.value)} placeholder="请输入商品名称" />
           </label>
           <label>
             销售状态
-            <select
-              value={status}
-              onChange={(event) => setStatus(event.target.value)}
-            >
+            <select value={status} onChange={(event) => setStatus(event.target.value)}>
               <option value="">全部状态</option>
               <option value="on_sale">销售中</option>
               <option value="off_sale">已下架</option>
@@ -129,9 +108,7 @@ export function ProductsPage({ canEdit }: { canEdit: boolean }) {
                       </div>
                     </td>
                     <td>{product.brand}</td>
-                    <td className="align-right money">
-                      {money(product.price)}
-                    </td>
+                    <td className="align-right money">{money(product.price)}</td>
                     <td className="align-right">{product.stock}</td>
                     <td className="align-right">{product.sales}</td>
                     <td>
@@ -139,18 +116,12 @@ export function ProductsPage({ canEdit }: { canEdit: boolean }) {
                     </td>
                     <td>{date(product.updatedAt)}</td>
                     <td className="operations">
-                      <button
-                        className="link-button"
-                        onClick={() => setDrawer(product)}
-                      >
+                      <button className="link-button" onClick={() => setDrawer(product)}>
                         编辑
                       </button>
                       {canEdit && (
-                        <button
-                          className="link-button"
-                          onClick={() => changeStatus(product)}
-                        >
-                          {product.status === "on_sale" ? "下架" : "上架"}
+                        <button className="link-button" onClick={() => changeStatus(product)}>
+                          {product.status === 'on_sale' ? '下架' : '上架'}
                         </button>
                       )}
                     </td>
@@ -161,8 +132,8 @@ export function ProductsPage({ canEdit }: { canEdit: boolean }) {
           ) : (
             <Empty
               onReset={() => {
-                setKeyword("");
-                setStatus("");
+                setKeyword('')
+                setStatus('')
               }}
             />
           )}
@@ -174,14 +145,14 @@ export function ProductsPage({ canEdit }: { canEdit: boolean }) {
           product={drawer}
           onClose={() => setDrawer(null)}
           onSaved={() => {
-            setDrawer(null);
-            list.reload();
-            setMessage("商品已保存");
+            setDrawer(null)
+            list.reload()
+            setMessage('商品已保存')
           }}
         />
       )}
     </>
-  );
+  )
 }
 
 function ProductDrawer({
@@ -189,78 +160,63 @@ function ProductDrawer({
   onClose,
   onSaved,
 }: {
-  product: Product | "new";
-  onClose: () => void;
-  onSaved: () => void;
+  product: Product | 'new'
+  onClose: () => void
+  onSaved: () => void
 }) {
-  const editing = product !== "new";
-  const [submitting, setSubmitting] = useState(false);
-  const [publish, setPublish] = useState(false);
+  const editing = product !== 'new'
+  const [submitting, setSubmitting] = useState(false)
+  const [publish, setPublish] = useState(false)
   async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    event.preventDefault()
+    const form = new FormData(event.currentTarget)
     const payload = {
-      name: form.get("name"),
-      subtitle: form.get("subtitle"),
-      brand: form.get("brand"),
-      categoryId: form.get("categoryId"),
-      price: Number(form.get("price")),
-      originalPrice: Number(form.get("originalPrice")),
-      stock: Number(form.get("stock")),
-      cover: form.get("cover"),
-      images: [form.get("cover")],
-      status: editing ? (product as Product).status : "draft",
+      name: form.get('name'),
+      subtitle: form.get('subtitle'),
+      brand: form.get('brand'),
+      categoryId: form.get('categoryId'),
+      price: Number(form.get('price')),
+      originalPrice: Number(form.get('originalPrice')),
+      stock: Number(form.get('stock')),
+      cover: form.get('cover'),
+      images: [form.get('cover')],
+      status: editing ? (product as Product).status : 'draft',
       sales: editing ? (product as Product).sales : 0,
       skus: editing ? (product as Product).skus : [],
-    };
-    setSubmitting(true);
+    }
+    setSubmitting(true)
     try {
       const saved: any = editing
         ? await api.patch(`/products/${(product as Product).id}`, payload)
-        : await api.post("/products", payload);
-      if (publish) await api.post(`/products/${saved.data.id}/publish`);
-      onSaved();
+        : await api.post('/products', payload)
+      if (publish) await api.post(`/products/${saved.data.id}/publish`)
+      onSaved()
     } catch (error) {
-      alert(error instanceof Error ? error.message : "保存失败");
+      alert(error instanceof Error ? error.message : '保存失败')
     } finally {
-      setSubmitting(false);
+      setSubmitting(false)
     }
   }
   return (
-    <Drawer title={editing ? "编辑商品" : "新建商品"} onClose={onClose}>
+    <Drawer title={editing ? '编辑商品' : '新建商品'} onClose={onClose}>
       <form className="drawer-form" onSubmit={submit}>
         <h4>基础信息</h4>
         <label>
           商品名称 <i>*</i>
-          <input
-            name="name"
-            defaultValue={editing ? product.name : ""}
-            required
-          />
+          <input name="name" defaultValue={editing ? product.name : ''} required />
         </label>
         <label>
           商品卖点
-          <input
-            name="subtitle"
-            defaultValue={editing ? product.subtitle : ""}
-          />
+          <input name="subtitle" defaultValue={editing ? product.subtitle : ''} />
         </label>
         <div className="form-grid">
           <label>
             品牌
-            <input
-              name="brand"
-              defaultValue={editing ? product.brand : ""}
-              required
-            />
+            <input name="brand" defaultValue={editing ? product.brand : ''} required />
           </label>
           <label>
             分类 ID
-            <input
-              name="categoryId"
-              defaultValue={editing ? product.categoryId : "cat_1"}
-              required
-            />
+            <input name="categoryId" defaultValue={editing ? product.categoryId : 'cat_1'} required />
           </label>
         </div>
         <label>
@@ -268,11 +224,7 @@ function ProductDrawer({
           <input
             name="cover"
             type="url"
-            defaultValue={
-              editing
-                ? product.cover
-                : "https://picsum.photos/seed/new-product/240/240"
-            }
+            defaultValue={editing ? product.cover : 'https://picsum.photos/seed/new-product/240/240'}
             required
           />
         </label>
@@ -285,7 +237,7 @@ function ProductDrawer({
               type="number"
               min="0"
               step="0.01"
-              defaultValue={editing ? product.price : ""}
+              defaultValue={editing ? product.price : ''}
               required
             />
           </label>
@@ -296,54 +248,36 @@ function ProductDrawer({
               type="number"
               min="0"
               step="0.01"
-              defaultValue={editing ? product.originalPrice : ""}
+              defaultValue={editing ? product.originalPrice : ''}
               required
             />
           </label>
           <label>
             库存 <i>*</i>
-            <input
-              name="stock"
-              type="number"
-              min="0"
-              defaultValue={editing ? product.stock : ""}
-              required
-            />
+            <input name="stock" type="number" min="0" defaultValue={editing ? product.stock : ''} required />
           </label>
         </div>
         <div className="sku-note">
           <SlidersHorizontal size={16} />
           <div>
             <b>SKU 组合</b>
-            <span>
-              生产项目可在此接入规格组合生成器；本项目保留接口已有 skus 字段。
-            </span>
+            <span>生产项目可在此接入规格组合生成器；本项目保留接口已有 skus 字段。</span>
           </div>
         </div>
         <div className="drawer-footer">
           <button type="button" className="secondary" onClick={onClose}>
             取消
           </button>
-          <button
-            type="submit"
-            className="secondary"
-            disabled={submitting}
-            onClick={() => setPublish(false)}
-          >
+          <button type="submit" className="secondary" disabled={submitting} onClick={() => setPublish(false)}>
             保存草稿
           </button>
           {!editing && (
-            <button
-              type="submit"
-              className="primary"
-              disabled={submitting}
-              onClick={() => setPublish(true)}
-            >
-              {submitting ? "提交中…" : "保存并上架"}
+            <button type="submit" className="primary" disabled={submitting} onClick={() => setPublish(true)}>
+              {submitting ? '提交中…' : '保存并上架'}
             </button>
           )}
         </div>
       </form>
     </Drawer>
-  );
+  )
 }

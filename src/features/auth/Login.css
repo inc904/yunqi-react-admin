@@ -16,7 +16,7 @@
   flex-direction: column;
 }
 .login-aside:before {
-  content: "";
+  content: '';
   position: absolute;
   width: 760px;
   height: 760px;
@@ -41,7 +41,7 @@
 }
 .eyebrow {
   font:
-    600 11px "DM Mono",
+    600 11px 'DM Mono',
     monospace;
   letter-spacing: 1.4px;
   color: #6999f6;
@@ -68,7 +68,7 @@
   opacity: 0.45;
 }
 .login-orbs:after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 31px;
   border: 1px solid #83a4e4;

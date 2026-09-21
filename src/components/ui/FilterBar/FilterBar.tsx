@@ -1,14 +1,8 @@
-import type { ReactNode } from "react";
-import { Search } from "lucide-react";
-import "./FilterBar.css";
+import type { ReactNode } from 'react'
+import { Search } from 'lucide-react'
+import './FilterBar.css'
 
-export function FilterBar({
-  children,
-  onReset,
-}: {
-  children: ReactNode;
-  onReset?: () => void;
-}) {
+export function FilterBar({ children, onReset }: { children: ReactNode; onReset?: () => void }) {
   return (
     <div className="filter-bar">
       <div className="filter-fields">{children}</div>
@@ -24,5 +18,5 @@ export function FilterBar({
         )}
       </div>
     </div>
-  );
+  )
 }

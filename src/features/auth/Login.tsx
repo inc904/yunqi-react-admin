@@ -1,32 +1,32 @@
-import { useState } from "react";
-import "./Login.css";
-import type { FormEvent } from "react";
-import { Zap } from "lucide-react";
-import api from "@/api";
-import type { Auth } from "@/types";
+import { useState } from 'react'
+import './Login.css'
+import type { FormEvent } from 'react'
+import { Zap } from 'lucide-react'
+import api from '@/api'
+import type { Auth } from '@/types'
 
 /** 登录功能独立于应用壳：表单仅负责提交、保存身份状态并通知父组件切换页面。 */
 export function Login({ onLogin }: { onLogin: (auth: Auth) => void }) {
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
   async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setLoading(true);
-    setMessage("");
-    const form = new FormData(event.currentTarget);
+    event.preventDefault()
+    setLoading(true)
+    setMessage('')
+    const form = new FormData(event.currentTarget)
     try {
-      const result: any = await api.post("/auth/login", {
-        username: form.get("username"),
-        password: form.get("password"),
-      });
-      const auth = result.data as Auth;
-      localStorage.setItem("yunqi-token", auth.token);
-      localStorage.setItem("yunqi-auth", JSON.stringify(auth));
-      onLogin(auth);
+      const result: any = await api.post('/auth/login', {
+        username: form.get('username'),
+        password: form.get('password'),
+      })
+      const auth = result.data as Auth
+      localStorage.setItem('yunqi-token', auth.token)
+      localStorage.setItem('yunqi-auth', JSON.stringify(auth))
+      onLogin(auth)
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "登录失败");
+      setMessage(error instanceof Error ? error.message : '登录失败')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
   return (
@@ -61,16 +61,11 @@ export function Login({ onLogin }: { onLogin: (auth: Auth) => void }) {
           </label>
           <label>
             密码
-            <input
-              name="password"
-              type="password"
-              defaultValue="123456"
-              required
-            />
+            <input name="password" type="password" defaultValue="123456" required />
           </label>
           {message && <div className="error-banner">{message}</div>}
           <button className="primary full" disabled={loading}>
-            {loading ? "登录中…" : "登录"}
+            {loading ? '登录中…' : '登录'}
           </button>
           <div className="demo-tip">
             <b>演示账号</b>
@@ -83,5 +78,5 @@ export function Login({ onLogin }: { onLogin: (auth: Auth) => void }) {
         </form>
       </section>
     </main>
-  );
+  )
 }

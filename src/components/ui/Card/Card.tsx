@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import "./Card.css";
+import type { ReactNode } from 'react'
+import './Card.css'
 
 /**
  * 通用卡片通过 header、children、footer 三个插槽承载不同内容，
@@ -9,12 +9,12 @@ export function Card({
   header,
   children,
   footer,
-  className = "",
+  className = '',
 }: {
-  header?: ReactNode;
-  children: ReactNode;
-  footer?: ReactNode;
-  className?: string;
+  header?: ReactNode
+  children: ReactNode
+  footer?: ReactNode
+  className?: string
 }) {
   return (
     <section className={`card ${className}`.trim()}>
@@ -22,5 +22,5 @@ export function Card({
       <div className="card-body">{children}</div>
       {footer && <div className="card-footer">{footer}</div>}
     </section>
-  );
+  )
 }

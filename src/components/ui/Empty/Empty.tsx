@@ -1,5 +1,5 @@
-import { Package } from "lucide-react";
-import "./Empty.css";
+import { Package } from 'lucide-react'
+import './Empty.css'
 
 export function Empty({ onReset }: { onReset?: () => void }) {
   return (
@@ -12,5 +12,5 @@ export function Empty({ onReset }: { onReset?: () => void }) {
         </button>
       )}
     </div>
-  );
+  )
 }

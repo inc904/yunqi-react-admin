@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
-import { X } from "lucide-react";
-import { Card } from "@/components/ui/Card/Card";
-import "./Modal.css";
+import type { ReactNode } from 'react'
+import { X } from 'lucide-react'
+import { Card } from '@/components/ui/Card/Card'
+import './Modal.css'
 
 /** 使用 Card 的三个插槽统一弹窗标题、内容与操作区。 */
 export function Modal({
@@ -10,27 +10,20 @@ export function Modal({
   children,
   footer,
 }: {
-  title: ReactNode;
-  onClose: () => void;
-  children: ReactNode;
-  footer?: ReactNode;
+  title: ReactNode
+  onClose: () => void
+  children: ReactNode
+  footer?: ReactNode
 }) {
   return (
     <div className="modal-backdrop" onMouseDown={onClose}>
-      <div
-        className="modal-shell"
-        onMouseDown={(event) => event.stopPropagation()}
-      >
+      <div className="modal-shell" onMouseDown={(event) => event.stopPropagation()}>
         <Card
           className="modal"
           header={
             <>
               <h3>{title}</h3>
-              <button
-                className="icon-button"
-                onClick={onClose}
-                aria-label="关闭弹窗"
-              >
+              <button className="icon-button" onClick={onClose} aria-label="关闭弹窗">
                 <X size={19} />
               </button>
             </>
@@ -41,5 +34,5 @@ export function Modal({
         </Card>
       </div>
     </div>
-  );
+  )
 }

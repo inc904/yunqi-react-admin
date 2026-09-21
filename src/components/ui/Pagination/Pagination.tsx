@@ -1,17 +1,17 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import type { PageResult } from "@/types";
-import "./Pagination.css";
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import type { PageResult } from '@/types'
+import './Pagination.css'
 
 export function Pagination({
   meta,
   page,
   setPage,
 }: {
-  meta?: PageResult<unknown>["meta"];
-  page: number;
-  setPage: (page: number) => void;
+  meta?: PageResult<unknown>['meta']
+  page: number
+  setPage: (page: number) => void
 }) {
-  if (!meta) return null;
+  if (!meta) return null
   return (
     <div className="pagination">
       <span>共 {meta.total} 条</span>
@@ -20,12 +20,9 @@ export function Pagination({
       </button>
       <b>{page}</b>
       <span>/ {meta.totalPages}</span>
-      <button
-        disabled={page >= meta.totalPages}
-        onClick={() => setPage(page + 1)}
-      >
+      <button disabled={page >= meta.totalPages} onClick={() => setPage(page + 1)}>
         <ChevronRight size={16} />
       </button>
     </div>
-  );
+  )
 }
