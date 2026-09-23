@@ -3,7 +3,7 @@ import type { Auth } from '@/types'
 import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router'
 
-import { AUTH_EXPIRED_EVENT, clearAuthStorage } from '@/api'
+import api, { AUTH_EXPIRED_EVENT, clearAuthStorage } from '@/api'
 import { NotFoundPage } from '@/app/NotFoundPage'
 import { ConsoleLayout, hasPermission } from '@/components/layout/ConsoleLayout'
 import { Login } from '@/features/auth/Login'
@@ -63,10 +63,16 @@ export default function App() {
   return (
     <ConsoleLayout
       auth={auth}
-      onLogout={() => {
-        // 当前 API 没有 /auth/logout；JWT 为无状态令牌，清理本地会话即可退出。
-        clearAuthStorage()
-        setAuth(null)
+      onLogout={async () => {
+        try {
+          // 服务端会把当前 Token 加入注销列表，避免它在退出后继续访问受保护接口。
+          await api.post('/auth/logout')
+        } catch {
+          // 网络异常或 Token 已失效时仍然完成本地退出，避免用户被困在登录态。
+        } finally {
+          clearAuthStorage()
+          setAuth(null)
+        }
       }}
     >
       <Routes>
