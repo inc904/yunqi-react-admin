@@ -1,9 +1,12 @@
+import type { Banner, Coupon } from '@/types'
+
 import { Plus } from 'lucide-react'
-import './MarketingPages.css'
+
 import { PageTitle, State, TagPill } from '@/components/ui'
 import { usePage } from '@/hooks/useRequest'
 import { date } from '@/lib/presentation'
-import type { Banner, Coupon } from '@/types'
+
+import './MarketingPages.css'
 
 export function CouponsPage() {
   const list = usePage<Coupon>('/coupons', {

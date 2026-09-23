@@ -1,7 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
-import api from '@/api'
 import type { ApiEnvelope } from '@/api'
 import type { PageResult } from '@/types'
+
+import { useCallback, useEffect, useState } from 'react'
+
+import api from '@/api'
 
 /** 单对象接口：只取业务信封中的 data。 */
 export function useRequest<T>(url: string, params?: Record<string, unknown>) {

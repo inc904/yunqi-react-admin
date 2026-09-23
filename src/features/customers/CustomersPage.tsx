@@ -1,9 +1,12 @@
+import type { Customer } from '@/types'
+
 import { useState } from 'react'
-import './CustomersPage.css'
+
 import { FilterBar, PageTitle, Pagination, State, TagPill } from '@/components/ui'
 import { usePage } from '@/hooks/useRequest'
 import { date, money } from '@/lib/presentation'
-import type { Customer } from '@/types'
+
+import './CustomersPage.css'
 
 export function CustomersPage() {
   const [page, setPage] = useState(1)

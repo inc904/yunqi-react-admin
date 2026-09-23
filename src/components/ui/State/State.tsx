@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
+
 import { RefreshCw, X } from 'lucide-react'
+
 import './State.css'
 
 /** 所有异步页面共享三态，避免每个业务组件重复维护加载和错误 JSX。 */

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+
 import './Toast.css'
 
 export function Toast({ message, onClose }: { message: string; onClose: () => void }) {

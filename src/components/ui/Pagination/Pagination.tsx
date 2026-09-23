@@ -1,5 +1,7 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { PageResult } from '@/types'
+
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+
 import './Pagination.css'
 
 export function Pagination({

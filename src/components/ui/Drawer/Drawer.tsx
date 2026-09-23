@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
+
 import { X } from 'lucide-react'
+
 import './Drawer.css'
 
 export function Drawer({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {

@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
+
 import { Search } from 'lucide-react'
+
 import './FilterBar.css'
 
 export function FilterBar({ children, onReset }: { children: ReactNode; onReset?: () => void }) {

@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import './ProductsPage.css'
+import type { Product } from '@/types'
 import type { FormEvent } from 'react'
+
 import { Plus, SlidersHorizontal } from 'lucide-react'
+import { useState } from 'react'
+
 import api from '@/api'
+import { Drawer, Empty, FilterBar, PageTitle, Pagination, State, TagPill, Toast } from '@/components/ui'
 import { usePage } from '@/hooks/useRequest'
 import { date, money } from '@/lib/presentation'
-import { Drawer, Empty, FilterBar, PageTitle, Pagination, State, TagPill, Toast } from '@/components/ui'
-import type { Product } from '@/types'
+
+import './ProductsPage.css'
 
 /** 商品模块独立维护筛选、分页和业务动作；通用 UI 组件不感知商品字段。 */
 export function ProductsPage({ canEdit }: { canEdit: boolean }) {

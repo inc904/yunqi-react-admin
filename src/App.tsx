@@ -1,5 +1,9 @@
-import { useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import type { Auth } from '@/types'
+
+import { useEffect, useState } from 'react'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router'
+
+import { AUTH_EXPIRED_EVENT, clearAuthStorage } from '@/api'
 import { NotFoundPage } from '@/app/NotFoundPage'
 import { ConsoleLayout, hasPermission } from '@/components/layout/ConsoleLayout'
 import { Login } from '@/features/auth/Login'
@@ -10,23 +14,58 @@ import { BannersPage, CouponsPage } from '@/features/marketing/MarketingPages'
 import { OrdersPage } from '@/features/orders/OrdersPage'
 import { ProductsPage } from '@/features/products/ProductsPage'
 import { AdminUsersPage, LogsPage, RolesPage } from '@/features/system/SystemPages'
-import type { Auth } from '@/types'
 
 /**
  * 根组件只做两件事：恢复登录态、声明路由。具体业务页面全部放在 features 下，
  * 应用壳与通用组件不再和具体商品/订单逻辑耦合。
  */
 export default function App() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [auth, setAuth] = useState<Auth | null>(() => {
     const raw = localStorage.getItem('yunqi-auth')
     return raw ? JSON.parse(raw) : null
   })
-  if (!auth) return <Login onLogin={setAuth} />
+  const [returnTo, setReturnTo] = useState<string | null>(null)
+
+  useEffect(() => {
+    const handleAuthExpired = () => {
+      // 保存完整地址，重新登录后可以回到令牌失效前的页面和筛选状态。
+      setReturnTo(`${location.pathname}${location.search}${location.hash}`)
+      setAuth(null)
+    }
+    window.addEventListener(AUTH_EXPIRED_EVENT, handleAuthExpired)
+    return () => window.removeEventListener(AUTH_EXPIRED_EVENT, handleAuthExpired)
+  }, [location.pathname, location.search, location.hash])
+
+  const currentPath = `${location.pathname}${location.search}${location.hash}`
+  const redirectFromLogin = new URLSearchParams(location.search).get('redirect')
+  const destination = returnTo || (redirectFromLogin?.startsWith('/') ? redirectFromLogin : null) || '/dashboard'
+
+  if (!auth) {
+    if (location.pathname !== '/login') {
+      return <Navigate to={`/login?redirect=${encodeURIComponent(returnTo || currentPath)}`} replace />
+    }
+    return (
+      <Login
+        onLogin={(nextAuth) => {
+          setAuth(nextAuth)
+          setReturnTo(null)
+          navigate(destination, { replace: true })
+        }}
+      />
+    )
+  }
+
+  // 已登录时访问登录页没有意义，避免浏览器后退再次停留在登录表单。
+  if (location.pathname === '/login') return <Navigate to="/dashboard" replace />
+
   return (
     <ConsoleLayout
       auth={auth}
       onLogout={() => {
-        localStorage.clear()
+        // 当前 API 没有 /auth/logout；JWT 为无状态令牌，清理本地会话即可退出。
+        clearAuthStorage()
         setAuth(null)
       }}
     >

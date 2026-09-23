@@ -1,10 +1,12 @@
+import type { Auth } from '@/types'
+import type { ReactNode } from 'react'
+
+import { Bell, ChevronDown, ChevronLeft, ChevronRight, Menu, Search, Zap } from 'lucide-react'
+import { useState } from 'react'
+import { NavLink, useLocation } from 'react-router'
+
 import { Modal } from '@/components/ui'
 import { navigation } from '@/constants/navigation'
-import type { Auth } from '@/types'
-import { Bell, ChevronDown, ChevronLeft, ChevronRight, Menu, Search, Zap } from 'lucide-react'
-import type { ReactNode } from 'react'
-import { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
 
 export const hasPermission = (auth: Auth, code: string) =>
   auth.permissions.includes('*') || auth.permissions.includes(code)
@@ -15,6 +17,9 @@ export function ConsoleLayout({ auth, onLogout, children }: { auth: Auth; onLogo
   // 退出登录会清除本地凭证，属于不可逆的当前会话操作，先要求用户确认。
   const [logoutConfirming, setLogoutConfirming] = useState(false)
   const location = useLocation()
+  console.log('navigation', navigation)
+  console.log('location', location)
+
   const current = navigation.find((item) => 'to' in item && item.to === location.pathname)
   const title = current && 'label' in current ? current.label : '仪表盘'
   return (

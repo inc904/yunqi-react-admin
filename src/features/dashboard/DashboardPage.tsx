@@ -1,11 +1,14 @@
+import type { Overview, Trend } from '@/types'
+
+import { ChevronRight } from 'lucide-react'
+import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router'
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+
 import { PageTitle, State } from '@/components/ui'
 import { useRequest } from '@/hooks/useRequest'
 import { money, shortDate } from '@/lib/presentation'
-import type { Overview, Trend } from '@/types'
-import { ChevronRight } from 'lucide-react'
-import { useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+
 import './DashboardPage.css'
 
 /** 仪表盘将概览、待办、趋势拆为同一功能域，所有数据通过单对象 Hook 获取。 */

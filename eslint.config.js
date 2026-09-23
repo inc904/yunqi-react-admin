@@ -1,5 +1,6 @@
 import js from '@eslint/js'
 import globals from 'globals'
+import perfectionist from 'eslint-plugin-perfectionist'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
@@ -30,10 +31,34 @@ export default tseslint.config(
       globals: globals.browser,
     },
     plugins: {
+      perfectionist,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
     rules: {
+      // 统一 import 分组：类型 -> 第三方/Node -> @/ 内部模块 -> 相对路径 -> 样式等副作用。
+      // 组内按模块路径自然排序，并让副作用导入也能移动到正确分组。
+      'perfectionist/sort-imports': [
+        'error',
+        {
+          type: 'natural',
+          order: 'asc',
+          sortBy: 'path',
+          newlinesBetween: 1,
+          internalPattern: ['^@/'],
+          sortSideEffects: true,
+          groups: [
+            'type-import',
+            ['value-builtin', 'value-external'],
+            'value-internal',
+            ['value-parent', 'value-sibling', 'value-index'],
+            'side-effect-style',
+            'side-effect',
+            'unknown',
+          ],
+        },
+      ],
+
       // Hooks 只能在组件或自定义 Hook 顶层调用；依赖项遗漏时给出提示。
       ...reactHooks.configs.recommended.rules,
 

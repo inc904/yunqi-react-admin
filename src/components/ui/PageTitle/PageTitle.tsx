@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+
 import './PageTitle.css'
 
 export function PageTitle({ title, description, action }: { title: string; description?: string; action?: ReactNode }) {
