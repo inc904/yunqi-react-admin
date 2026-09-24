@@ -1,4 +1,22 @@
-/* 样式入口只负责声明加载顺序；具体规则按职责拆入 styles/。 */
+/* 全局样式入口：按基础变量 → 主题配色 → 布局 → 通用组件 → 响应式覆盖加载。 */
+
+/* 基础字体、重置规则与旧变量别名 */
 @import './styles/tokens.css';
+
+/* 可切换主题：顺序与 src/theme/index.ts 中的 themes 一致 */
+@import './styles/themes/orange.css';
+@import './styles/themes/slate.css';
+@import './styles/themes/forest.css';
+@import './styles/themes/ocean.css';
+@import './styles/themes/sunset.css';
+
+/* 页面框架与导航 */
 @import './styles/layout.css';
+
+/* 跨页面复用的基础组件 */
+@import './components/ui/Button/Button.css';
+@import './components/ui/Card/Card.css';
+@import './components/ui/TableFrame/TableFrame.css';
+
+/* 放在最后，使窄屏规则可以覆盖前面的基础样式 */
 @import './styles/responsive.css';

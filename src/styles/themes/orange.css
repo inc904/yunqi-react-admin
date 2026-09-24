@@ -1,0 +1,55 @@
+/* 热烈：明亮的朱橙与温暖的中性色。 */
+:root,
+:root[data-theme='orange'][data-mode='light'],
+[data-preview-theme='orange'][data-preview-mode='light'] {
+  color-scheme: light;
+  --color-primary: #b44712;
+  --color-primary-hover: #91370e;
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: #fce8da;
+  --color-primary-faint: #dfaa8d;
+  --shadow-primary: 0 4px 12px rgb(180 71 18 / 25%);
+
+  --color-page: #f9f5f1;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7eee7;
+  --color-text: #33271f;
+  --color-text-muted: #68574d;
+  --color-text-subtle: #78675d;
+  --color-border: #e7d9ce;
+
+  --color-sidebar: #30221d;
+  --color-sidebar-text: #e7d5c9;
+  --color-sidebar-muted: #c6aa98;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #745b4c;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #b42332;
+}
+
+:root[data-theme='orange'][data-mode='dark'],
+[data-preview-theme='orange'][data-preview-mode='dark'] {
+  color-scheme: dark;
+  --color-primary: #ff995c;
+  --color-primary-hover: #ffb382;
+  --color-primary-contrast: #28170f;
+  --color-primary-soft: #422a20;
+  --color-primary-faint: #bd7855;
+  --shadow-primary: 0 4px 12px rgb(255 153 92 / 25%);
+
+  --color-page: #1c1917;
+  --color-surface: #28231f;
+  --color-surface-muted: #342c26;
+  --color-text: #f7eee7;
+  --color-text-muted: #d0beb2;
+  --color-text-subtle: #b9a69a;
+  --color-border: #514137;
+
+  --color-sidebar: #171311;
+  --color-sidebar-text: #e5d2c5;
+  --color-sidebar-muted: #bca392;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #604b3f;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #ff8489;
+}

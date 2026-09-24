@@ -1,0 +1,54 @@
+/* 日落：柔和的玫红与暮色紫灰。 */
+:root[data-theme='sunset'][data-mode='light'],
+[data-preview-theme='sunset'][data-preview-mode='light'] {
+  color-scheme: light;
+  --color-primary: #a7445d;
+  --color-primary-hover: #893149;
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: #f8e6e9;
+  --color-primary-faint: #dfacb8;
+  --shadow-primary: 0 4px 12px rgb(167 68 93 / 24%);
+
+  --color-page: #faf5f5;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7ecee;
+  --color-text: #392b34;
+  --color-text-muted: #695662;
+  --color-text-subtle: #786572;
+  --color-border: #e9d9df;
+
+  --color-sidebar: #35242e;
+  --color-sidebar-text: #ead6df;
+  --color-sidebar-muted: #caaebd;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #735361;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #b3243d;
+}
+
+:root[data-theme='sunset'][data-mode='dark'],
+[data-preview-theme='sunset'][data-preview-mode='dark'] {
+  color-scheme: dark;
+  --color-primary: #f295ac;
+  --color-primary-hover: #ffb4c3;
+  --color-primary-contrast: #351b28;
+  --color-primary-soft: #482b39;
+  --color-primary-faint: #ad6a82;
+  --shadow-primary: 0 4px 12px rgb(242 149 172 / 22%);
+
+  --color-page: #211a21;
+  --color-surface: #2e242e;
+  --color-surface-muted: #3b2d3a;
+  --color-text: #f8edf3;
+  --color-text-muted: #d4bfca;
+  --color-text-subtle: #bda7b3;
+  --color-border: #584251;
+
+  --color-sidebar: #19131a;
+  --color-sidebar-text: #ead5df;
+  --color-sidebar-muted: #c9aabd;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #684c5c;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #ff899b;
+}

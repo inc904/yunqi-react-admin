@@ -1,0 +1,54 @@
+/* 海洋：通透的海蓝与带青调的表面。 */
+:root[data-theme='ocean'][data-mode='light'],
+[data-preview-theme='ocean'][data-preview-mode='light'] {
+  color-scheme: light;
+  --color-primary: #136b89;
+  --color-primary-hover: #0e536d;
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: #def2f6;
+  --color-primary-faint: #9bcbd7;
+  --shadow-primary: 0 4px 12px rgb(19 107 137 / 24%);
+
+  --color-page: #f1f7f8;
+  --color-surface: #ffffff;
+  --color-surface-muted: #e8f3f5;
+  --color-text: #20353c;
+  --color-text-muted: #4c646b;
+  --color-text-subtle: #5b7279;
+  --color-border: #d3e3e7;
+
+  --color-sidebar: #18323b;
+  --color-sidebar-text: #d1e6ea;
+  --color-sidebar-muted: #a5c6cd;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #486e77;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #b52d3d;
+}
+
+:root[data-theme='ocean'][data-mode='dark'],
+[data-preview-theme='ocean'][data-preview-mode='dark'] {
+  color-scheme: dark;
+  --color-primary: #71cbe4;
+  --color-primary-hover: #9adeef;
+  --color-primary-contrast: #102b34;
+  --color-primary-soft: #214450;
+  --color-primary-faint: #5598a9;
+  --shadow-primary: 0 4px 12px rgb(113 203 228 / 22%);
+
+  --color-page: #142329;
+  --color-surface: #20333b;
+  --color-surface-muted: #2a4149;
+  --color-text: #ecf6f7;
+  --color-text-muted: #bdd3d8;
+  --color-text-subtle: #a5c0c7;
+  --color-border: #3b5b64;
+
+  --color-sidebar: #0e1b20;
+  --color-sidebar-text: #d2e9ed;
+  --color-sidebar-muted: #a7c9d0;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #456873;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #ff8994;
+}

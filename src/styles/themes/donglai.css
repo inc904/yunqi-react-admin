@@ -1,0 +1,61 @@
+/*
+ * 每个主题都有浅色、深色两组相同名称的变量。
+ * :root 是属性尚未初始化时的东来浅色兜底；data-theme/data-mode 控制全站；
+ * data-preview-theme/data-preview-mode 只让系统配置页的主题小卡显示对应配色。
+ * 组件只引用语义变量，不直接依赖这里的具体色值。
+ */
+:root,
+:root[data-theme='donglai'][data-mode='light'],
+[data-preview-theme='donglai'][data-preview-mode='light'] {
+  color-scheme: light; /* 告诉浏览器原生表单控件使用浅色外观。 */
+  --color-primary: #f25c05; /* 主要按钮、品牌标记、当前导航项 */
+  --color-primary-hover: #d95204; /* 主要按钮的悬停状态 */
+  --color-primary-contrast: #ffffff; /* 主色背景上的文字和图标 */
+  --color-primary-soft: #fff0e7; /* 柔和的品牌色背景，如提示图标 */
+  --color-primary-faint: #ffd4b9; /* 弱化的大号装饰文字 */
+  --shadow-primary: 0 4px 12px rgb(242 92 5 / 30%); /* 品牌强调区域的阴影 */
+
+  --color-page: #f4f5f7; /* 后台内容区和页面底色 */
+  --color-surface: #ffffff; /* 顶栏、卡片、次要按钮背景 */
+  --color-surface-muted: #f6f8fb; /* 搜索框和轻微悬停背景 */
+  --color-text: #262626; /* 标题和正文 */
+  --color-text-muted: #6b7280; /* 说明文字和次要图标 */
+  --color-text-subtle: #8c8c8c; /* 面包屑和辅助标签 */
+  --color-border: #e5e7eb; /* 卡片、输入框和区域分隔线 */
+
+  --color-sidebar: #1a1817; /* 左侧导航区域底色 */
+  --color-sidebar-text: #aeb4bd; /* 普通导航项文字 */
+  --color-sidebar-muted: #8f99a8; /* 菜单分组和品牌副标题 */
+  --color-sidebar-hover: rgb(255 255 255 / 9%); /* 侧栏导航悬停背景 */
+  --color-sidebar-divider: #4b5563; /* 侧栏品牌区分隔线 */
+  --color-sidebar-active: #ffffff; /* 深色侧栏上的强调文字 */
+  --color-danger: #ef4444; /* 通知红点等警示状态 */
+}
+
+/* 东来深色：保留橙色品牌感，降低页面和卡片亮度。变量用途同上。 */
+:root[data-theme='donglai'][data-mode='dark'],
+[data-preview-theme='donglai'][data-preview-mode='dark'] {
+  color-scheme: dark; /* 深色时同步原生表单控件的外观。 */
+  --color-primary: #ff8a4c;
+  --color-primary-hover: #ffab78;
+  --color-primary-contrast: #28170d;
+  --color-primary-soft: #3a261f;
+  --color-primary-faint: #a86441;
+  --shadow-primary: 0 4px 12px rgb(255 138 76 / 26%);
+
+  --color-page: #191715;
+  --color-surface: #25211f;
+  --color-surface-muted: #302a27;
+  --color-text: #f5f0eb;
+  --color-text-muted: #c5b9af;
+  --color-text-subtle: #9c8d82;
+  --color-border: #493e37;
+
+  --color-sidebar: #120f0e;
+  --color-sidebar-text: #d5c2b3;
+  --color-sidebar-muted: #ab9585;
+  --color-sidebar-hover: rgb(255 255 255 / 9%);
+  --color-sidebar-divider: #58483f;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #ff7770;
+}

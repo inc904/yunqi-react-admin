@@ -2,11 +2,12 @@
 
 /* 设计 Token 与浏览器重置：其它样式文件只消费这些全局基础约定。 */
 :root {
-  --brand: #2563eb;
-  --page-bg: #f5f7fa;
-  --border: #e6eaf0;
-  --text: #172033;
-  --muted: #8b95a7;
+  /* 旧页面仍读取这些别名；主题的具体值只在 themes/*.css 中定义。 */
+  --brand: var(--color-primary);
+  --page-bg: var(--color-page);
+  --border: var(--color-border);
+  --text: var(--color-text);
+  --muted: var(--color-text-muted);
   font-family: 'Noto Sans SC', Inter, Arial, sans-serif;
   color: var(--text);
   background: var(--page-bg);
@@ -23,7 +24,7 @@ button,
 input,
 select {
   font: inherit;
-  outline-color: var(--brand);
+  outline-color: var(--color-primary);
 }
 button {
   cursor: pointer;

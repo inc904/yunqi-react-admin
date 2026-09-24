@@ -6,6 +6,7 @@ import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router'
 import api, { AUTH_EXPIRED_EVENT, clearAuthStorage } from '@/api'
 import { NotFoundPage } from '@/app/NotFoundPage'
 import { ConsoleLayout, hasPermission } from '@/components/layout/ConsoleLayout'
+import AppSettings from '@/features/appSettings/AppSettings'
 import { Login } from '@/features/auth/Login'
 import { CategoriesPage } from '@/features/catalog/CategoriesPage'
 import { CustomersPage } from '@/features/customers/CustomersPage'
@@ -88,6 +89,7 @@ export default function App() {
         <Route path="/admin-users" element={<AdminUsersPage />} />
         <Route path="/roles" element={<RolesPage />} />
         <Route path="/logs" element={<LogsPage />} />
+        <Route path="/app-settings" element={<AppSettings />} />
         {/* 只匹配未定义的前端路径，保留用户发现问题与返回的机会。 */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

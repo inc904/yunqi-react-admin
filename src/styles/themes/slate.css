@@ -1,0 +1,54 @@
+/* 青岩：冷静的岩蓝与雾灰。 */
+:root[data-theme='slate'][data-mode='light'],
+[data-preview-theme='slate'][data-preview-mode='light'] {
+  color-scheme: light;
+  --color-primary: #315b75;
+  --color-primary-hover: #24485e;
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: #e1edf2;
+  --color-primary-faint: #a3bfcd;
+  --shadow-primary: 0 4px 12px rgb(49 91 117 / 24%);
+
+  --color-page: #f2f5f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eaf0f2;
+  --color-text: #26343d;
+  --color-text-muted: #52636d;
+  --color-text-subtle: #62727b;
+  --color-border: #d5e0e4;
+
+  --color-sidebar: #202f39;
+  --color-sidebar-text: #d4e0e5;
+  --color-sidebar-muted: #a7bdc7;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #506975;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #b52d3d;
+}
+
+:root[data-theme='slate'][data-mode='dark'],
+[data-preview-theme='slate'][data-preview-mode='dark'] {
+  color-scheme: dark;
+  --color-primary: #8abbd4;
+  --color-primary-hover: #a6d1e4;
+  --color-primary-contrast: #122631;
+  --color-primary-soft: #263e4b;
+  --color-primary-faint: #688fa3;
+  --shadow-primary: 0 4px 12px rgb(138 187 212 / 23%);
+
+  --color-page: #172127;
+  --color-surface: #233038;
+  --color-surface-muted: #2d3c45;
+  --color-text: #edf4f5;
+  --color-text-muted: #bdcdd2;
+  --color-text-subtle: #a6bbc2;
+  --color-border: #405660;
+
+  --color-sidebar: #111b21;
+  --color-sidebar-text: #d4e2e6;
+  --color-sidebar-muted: #a6bec6;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #48606b;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #ff8994;
+}

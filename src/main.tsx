@@ -3,17 +3,21 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 
 import App from '@/App'
+import { applyPreference, applyTheme, getPreference, getTheme } from '@/theme'
+import ThemeProvider from '@/theme/ThemeProvider'
 
-// 两类纯样式基础组件由入口统一加载，业务页面可以直接复用其 className。
-import '@/components/ui/Button/Button.css'
-import '@/components/ui/Card/Card.css'
-import '@/components/ui/TableFrame/TableFrame.css'
+// 全局样式与主题统一由 styles.css 加载。
 import '@/styles.css'
+
+applyTheme(getTheme())
+applyPreference(getPreference())
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>,
 )

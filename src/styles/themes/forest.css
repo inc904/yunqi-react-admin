@@ -1,0 +1,54 @@
+/* 森林：沉稳的松绿与柔和的苔色。 */
+:root[data-theme='forest'][data-mode='light'],
+[data-preview-theme='forest'][data-preview-mode='light'] {
+  color-scheme: light;
+  --color-primary: #256b4f;
+  --color-primary-hover: #1c543d;
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: #e1f1e8;
+  --color-primary-faint: #a5cbb5;
+  --shadow-primary: 0 4px 12px rgb(37 107 79 / 24%);
+
+  --color-page: #f3f7f2;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eaf2e9;
+  --color-text: #25352b;
+  --color-text-muted: #526457;
+  --color-text-subtle: #617263;
+  --color-border: #d6e2d5;
+
+  --color-sidebar: #1d3026;
+  --color-sidebar-text: #d5e4d9;
+  --color-sidebar-muted: #aac5b2;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #4c6a55;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #b32d3b;
+}
+
+:root[data-theme='forest'][data-mode='dark'],
+[data-preview-theme='forest'][data-preview-mode='dark'] {
+  color-scheme: dark;
+  --color-primary: #7cd5a6;
+  --color-primary-hover: #a2e8c0;
+  --color-primary-contrast: #102a1e;
+  --color-primary-soft: #264234;
+  --color-primary-faint: #609b78;
+  --shadow-primary: 0 4px 12px rgb(124 213 166 / 22%);
+
+  --color-page: #17221b;
+  --color-surface: #223127;
+  --color-surface-muted: #2d3d31;
+  --color-text: #eef5ec;
+  --color-text-muted: #c1d1c2;
+  --color-text-subtle: #aabdac;
+  --color-border: #405747;
+
+  --color-sidebar: #111b15;
+  --color-sidebar-text: #d8e9da;
+  --color-sidebar-muted: #abc6ae;
+  --color-sidebar-hover: rgb(255 255 255 / 10%);
+  --color-sidebar-divider: #4b6752;
+  --color-sidebar-active: #ffffff;
+  --color-danger: #ff8c91;
+}

@@ -13,26 +13,27 @@
 }
 
 .primary {
-  background: var(--brand);
-  border-color: var(--brand);
-  color: #fff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
 }
 .primary:hover {
-  background: #1d4ed8;
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
 }
 .secondary {
-  background: #fff;
-  border-color: #d8dee8;
-  color: #405068;
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
 }
 .secondary:hover {
-  background: #f8fafc;
+  background: var(--color-surface-muted);
 }
 .text-button,
 .link-button {
   background: none;
   border: 0;
-  color: var(--brand);
+  color: var(--color-primary);
   padding: 0;
   font-size: 13px;
 }
@@ -40,7 +41,7 @@
   margin-right: 13px;
 }
 .danger-text {
-  color: #dc2626;
+  color: var(--color-danger);
 }
 .full {
   width: 100%;

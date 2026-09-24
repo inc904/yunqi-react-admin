@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 
 export type Permission =
-  'dashboard:view' | 'product:*' | 'order:*' | 'customer:view' | 'coupon:*' | 'banner:*' | 'system:*'
+  'dashboard:view' | 'product:*' | 'order:*' | 'customer:view' | 'coupon:*' | 'banner:*' | 'system:*' | 'app:*'
 export type NavigationItem =
   | { group: string }
   | {
@@ -77,6 +77,12 @@ export const navigation: NavigationItem[] = [
     to: '/logs',
     label: '操作日志',
     icon: ClipboardList,
+    permission: 'system:*',
+  },
+  {
+    to: '/app-settings',
+    label: 'APP设置',
+    icon: Settings,
     permission: 'system:*',
   },
 ]
